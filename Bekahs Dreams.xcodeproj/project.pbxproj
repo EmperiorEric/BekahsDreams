@@ -25,6 +25,8 @@
 		EF4CC6C916DD7A0A0090A1DB /* DreamViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF4CC6C816DD7A0A0090A1DB /* DreamViewController.m */; };
 		EF4CC6CC16DD98DE0090A1DB /* UITextFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EF4CC6CB16DD98DE0090A1DB /* UITextFieldCell.m */; };
 		EF4CC6CF16DEF18A0090A1DB /* UITextViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EF4CC6CE16DEF18A0090A1DB /* UITextViewCell.m */; };
+		EF4CC6D616DF03BD0090A1DB /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = EF4CC6D516DF03BD0090A1DB /* Icon.png */; };
+		EF4CC6D816DF03C50090A1DB /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EF4CC6D716DF03C50090A1DB /* Icon@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -57,6 +59,9 @@
 		EF4CC6CB16DD98DE0090A1DB /* UITextFieldCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UITextFieldCell.m; sourceTree = "<group>"; };
 		EF4CC6CD16DEF18A0090A1DB /* UITextViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UITextViewCell.h; sourceTree = "<group>"; };
 		EF4CC6CE16DEF18A0090A1DB /* UITextViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UITextViewCell.m; sourceTree = "<group>"; };
+		EF4CC6D016DF01600090A1DB /* Bekahs_Dreams 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Bekahs_Dreams 2.xcdatamodel"; sourceTree = "<group>"; };
+		EF4CC6D516DF03BD0090A1DB /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
+		EF4CC6D716DF03C50090A1DB /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +82,8 @@
 		EF4CC68D16DD74A00090A1DB = {
 			isa = PBXGroup;
 			children = (
+				EF4CC6D716DF03C50090A1DB /* Icon@2x.png */,
+				EF4CC6D516DF03BD0090A1DB /* Icon.png */,
 				EF4CC6A116DD74A00090A1DB /* Bekahs Dreams */,
 				EF4CC69816DD74A00090A1DB /* Frameworks */,
 				EF4CC69716DD74A00090A1DB /* Products */,
@@ -197,6 +204,8 @@
 				EF4CC6AE16DD74A00090A1DB /* Default.png in Resources */,
 				EF4CC6B016DD74A00090A1DB /* Default@2x.png in Resources */,
 				EF4CC6B216DD74A00090A1DB /* Default-568h@2x.png in Resources */,
+				EF4CC6D616DF03BD0090A1DB /* Icon.png in Resources */,
+				EF4CC6D816DF03C50090A1DB /* Icon@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -333,6 +342,7 @@
 				EF4CC6BA16DD74A00090A1DB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
@@ -340,6 +350,7 @@
 		EF4CC6B316DD74A00090A1DB /* Bekahs_Dreams.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				EF4CC6D016DF01600090A1DB /* Bekahs_Dreams 2.xcdatamodel */,
 				EF4CC6B416DD74A00090A1DB /* Bekahs_Dreams.xcdatamodel */,
 			);
 			currentVersion = EF4CC6B416DD74A00090A1DB /* Bekahs_Dreams.xcdatamodel */;
