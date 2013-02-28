@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface EditableCell : UITableViewCell
+@interface UITextFieldCell : UITableViewCell
 
 @property (nonatomic, strong) UITextField *textField;
 

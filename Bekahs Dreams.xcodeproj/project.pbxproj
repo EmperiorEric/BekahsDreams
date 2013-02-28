@@ -23,7 +23,8 @@
 		EF4CC6C316DD773C0090A1DB /* Dream.m in Sources */ = {isa = PBXBuildFile; fileRef = EF4CC6C216DD773C0090A1DB /* Dream.m */; };
 		EF4CC6C616DD79290090A1DB /* DreamEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF4CC6C516DD79290090A1DB /* DreamEditViewController.m */; };
 		EF4CC6C916DD7A0A0090A1DB /* DreamViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF4CC6C816DD7A0A0090A1DB /* DreamViewController.m */; };
-		EF4CC6CC16DD98DE0090A1DB /* EditableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EF4CC6CB16DD98DE0090A1DB /* EditableCell.m */; };
+		EF4CC6CC16DD98DE0090A1DB /* UITextFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EF4CC6CB16DD98DE0090A1DB /* UITextFieldCell.m */; };
+		EF4CC6CF16DEF18A0090A1DB /* UITextViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EF4CC6CE16DEF18A0090A1DB /* UITextViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,8 +53,10 @@
 		EF4CC6C516DD79290090A1DB /* DreamEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DreamEditViewController.m; sourceTree = "<group>"; };
 		EF4CC6C716DD7A0A0090A1DB /* DreamViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DreamViewController.h; sourceTree = "<group>"; };
 		EF4CC6C816DD7A0A0090A1DB /* DreamViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DreamViewController.m; sourceTree = "<group>"; };
-		EF4CC6CA16DD98DE0090A1DB /* EditableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditableCell.h; sourceTree = "<group>"; };
-		EF4CC6CB16DD98DE0090A1DB /* EditableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditableCell.m; sourceTree = "<group>"; };
+		EF4CC6CA16DD98DE0090A1DB /* UITextFieldCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UITextFieldCell.h; sourceTree = "<group>"; };
+		EF4CC6CB16DD98DE0090A1DB /* UITextFieldCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UITextFieldCell.m; sourceTree = "<group>"; };
+		EF4CC6CD16DEF18A0090A1DB /* UITextViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UITextViewCell.h; sourceTree = "<group>"; };
+		EF4CC6CE16DEF18A0090A1DB /* UITextViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UITextViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,8 +111,10 @@
 				EF4CC6BF16DD76320090A1DB /* DataManager.m */,
 				EF4CC6C116DD773C0090A1DB /* Dream.h */,
 				EF4CC6C216DD773C0090A1DB /* Dream.m */,
-				EF4CC6CA16DD98DE0090A1DB /* EditableCell.h */,
-				EF4CC6CB16DD98DE0090A1DB /* EditableCell.m */,
+				EF4CC6CA16DD98DE0090A1DB /* UITextFieldCell.h */,
+				EF4CC6CB16DD98DE0090A1DB /* UITextFieldCell.m */,
+				EF4CC6CD16DEF18A0090A1DB /* UITextViewCell.h */,
+				EF4CC6CE16DEF18A0090A1DB /* UITextViewCell.m */,
 				EF4CC6BB16DD75010090A1DB /* DreamListViewController.h */,
 				EF4CC6BC16DD75010090A1DB /* DreamListViewController.m */,
 				EF4CC6C416DD79290090A1DB /* DreamEditViewController.h */,
@@ -210,7 +215,8 @@
 				EF4CC6C316DD773C0090A1DB /* Dream.m in Sources */,
 				EF4CC6C616DD79290090A1DB /* DreamEditViewController.m in Sources */,
 				EF4CC6C916DD7A0A0090A1DB /* DreamViewController.m in Sources */,
-				EF4CC6CC16DD98DE0090A1DB /* EditableCell.m in Sources */,
+				EF4CC6CC16DD98DE0090A1DB /* UITextFieldCell.m in Sources */,
+				EF4CC6CF16DEF18A0090A1DB /* UITextViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

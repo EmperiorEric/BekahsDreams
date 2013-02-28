@@ -6,22 +6,26 @@
 //  Copyright (c) 2013 Frozen Fire Studios. All rights reserved.
 //
 
-#import "EditableCell.h"
+#import "UITextFieldCell.h"
 
-@interface EditableCell ()
+@interface UITextFieldCell ()
 
 @end
 
-@implementation EditableCell
+@implementation UITextFieldCell
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         // Initialization code
-        self.textField = [[UITextField alloc] initWithFrame:self.contentView.bounds];
+        self.textField = [[UITextField alloc] initWithFrame:CGRectInset(self.contentView.bounds, 8.0, 8.0)];
+        [self.textField setAutoresizingMask:UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth];
+        [self.textField setContentVerticalAlignment:UIControlContentVerticalAlignmentCenter];
         [self.textField setClearButtonMode:UITextFieldViewModeWhileEditing];
-        [self.textField setFont:[UIFont boldSystemFontOfSize:24.0]];
+        [self.textField setFont:[UIFont boldSystemFontOfSize:18.0]];
+        [self.textField setAdjustsFontSizeToFitWidth:YES];
+        [self.textField setMinimumFontSize:12.0];
         [self.contentView addSubview:self.textField];
     }
     return self;
