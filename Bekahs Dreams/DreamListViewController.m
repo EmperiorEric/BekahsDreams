@@ -53,8 +53,8 @@
 - (void)didEditDream:(Dream *)dream
 {
     dreams = [[[DataManager sharedManager] dreams] copy];
-    
-    [table reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];
+        
+    [table reloadData];
 }
 
 #pragma mark - UITableView Datasource
@@ -74,11 +74,32 @@
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
     
+    if (!cell) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
+    }
+    
     Dream *dream = [dreams objectAtIndex:indexPath.row];
     
     cell.textLabel.text = dream.title;
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     
     return cell;
+}
+
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return YES;
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        [[[DataManager sharedManager] managedObjectContext] deleteObject:[dreams objectAtIndex:indexPath.row]];
+        
+        dreams = [[[DataManager sharedManager] dreams] copy];
+        
+        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationMiddle];
+    }
 }
 
 #pragma mark - UITableView Delegate

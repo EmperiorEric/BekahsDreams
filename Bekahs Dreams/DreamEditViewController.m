@@ -7,7 +7,9 @@
 //
 
 #import "DreamEditViewController.h"
-#import "EditableCell.h"
+
+#import "UITextFieldCell.h"
+#import "UITextViewCell.h"
 
 @interface DreamEditViewController () <UITableViewDataSource, UITableViewDelegate>
 {
@@ -40,6 +42,11 @@
     // If we don't have a dream, we're making a new dream.
     newDream = (!self.dream);
     
+    if (!newDream) {
+        title = self.dream.title;
+        notes = self.dream.notes;
+    }
+    
     // navBar
     navBar = [[UINavigationBar alloc] initWithFrame:CGRectMake(0.0, 0.0, self.view.frame.size.width, 44.0)];
     [navBar setAutoresizingMask:UIViewAutoresizingFlexibleWidth];
@@ -53,9 +60,13 @@
     // Setup Table
     table = [[UITableView alloc] initWithFrame:CGRectMake(0.0, 44.0, self.view.frame.size.width, self.view.frame.size.height - 44.0) style:UITableViewStyleGrouped];
     [table setAutoresizingMask:UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth];
+    [table setAllowsSelection:NO];
     [table setDataSource:self];
     [table setDelegate:self];
     [self.view addSubview:table];
+    
+    [table registerClass:[UITextFieldCell class] forCellReuseIdentifier:@"TitleCell"];
+    [table registerClass:[UITextViewCell class] forCellReuseIdentifier:@"NotesCell"];
 }
 
 - (void)cancel
@@ -65,18 +76,25 @@
 
 - (void)finish
 {
+    title = [[(UITextFieldCell *)[table cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]] textField] text];
+    notes = [[(UITextViewCell *)[table cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:1]] textView] text];
+    
     // create dream
     if (newDream) {
-        self.dream = [[DataManager sharedManager] addDreamWithTitle:@"" andNotes:@""];
+        self.dream = [[DataManager sharedManager] addDreamWithTitle:title andNotes:notes];
+    } else {
+        [self.dream setTitle:title];
+        [self.dream setNotes:notes];
     }
     
     // save
     [[DataManager sharedManager] saveContext];
+
+    // Update Delegate
+    [self.delegate didEditDream:self.dream];
     
     // dismiss
-    [self dismissViewControllerAnimated:YES completion:^{
-        [self.delegate didEditDream:self.dream];
-    }];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark - UITableView Datasource
@@ -94,35 +112,40 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section) {
-        return 320.0;
+        return 256.0;
     } else {
         return 44.0;
     }
 }
 
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    if (section) {
+        return @"Notes";
+    } else {
+        return @"Title";
+    }
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    EditableCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
-    
-    if (!cell) {
-        cell = [[EditableCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
-    }
-    
     if (indexPath.section == 0) {
-        [cell.textField setPlaceholder:@"Title"];
-        
+        UITextFieldCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TitleCell"];
+                
         if (!newDream) {
             [cell.textField setText:self.dream.title];
         }
+        
+        return cell;
     } else {
-        [cell.textField setPlaceholder:@"Notes"];
+        UITextViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"NotesCell"];
         
         if (!newDream) {
-            [cell.textField setText:self.dream.notes];
+            [cell.textView setText:self.dream.notes];
         }
+        
+        return cell;
     }
-    
-    return cell;
 }
 
 #pragma mark - UITableView Delegate
