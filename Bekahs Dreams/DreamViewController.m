@@ -7,8 +7,9 @@
 //
 
 #import "DreamViewController.h"
+#import "DreamEditViewController.h"
 
-@interface DreamViewController ()
+@interface DreamViewController () <DreamEditorDelegate>
 
 @end
 
@@ -26,13 +27,35 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
+    
+    self.title = self.dream.title;
+    
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(editDream)];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)editDream
+{
+    // Present modal dream editor
+    DreamEditViewController *editor = [[DreamEditViewController alloc] init];
+    editor.delegate = self;
+    editor.dream = self.dream;
+    
+    [self presentViewController:editor animated:YES completion:^{
+        //
+    }];
+}
+
+#pragma mark - Dream Editor Delegate
+
+- (void)didEditDream:(Dream *)dream
+{
+    self.dream = dream;
 }
 
 @end

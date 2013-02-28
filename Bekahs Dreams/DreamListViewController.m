@@ -107,10 +107,18 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // Push Detail View
-    DreamViewController *viewer = [[DreamViewController alloc] init];
-    viewer.dream = [dreams objectAtIndex:indexPath.row];
+//    DreamViewController *viewer = [[DreamViewController alloc] init];
+//    viewer.dream = [dreams objectAtIndex:indexPath.row];
+//
+//    [self.navigationController pushViewController:viewer animated:YES];
+  
+    DreamEditViewController *editor = [[DreamEditViewController alloc] init];
+    editor.dream = [dreams objectAtIndex:indexPath.row];
+    editor.delegate = self;
     
-    [self.navigationController pushViewController:viewer animated:YES];
+    [self presentViewController:editor animated:YES completion:^{
+        //
+    }];
 }
 
 @end
