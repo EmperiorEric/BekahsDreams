@@ -2,7 +2,7 @@
 //  Dream.m
 //  Bekahs Dreams
 //
-//  Created by Ryan Poolos on 2/26/13.
+//  Created by Ryan Poolos on 3/5/13.
 //  Copyright (c) 2013 Frozen Fire Studios. All rights reserved.
 //
 
@@ -11,8 +11,9 @@
 
 @implementation Dream
 
-@dynamic title;
 @dynamic notes;
 @dynamic timeStamp;
+@dynamic title;
+@dynamic archived;
 
 @end

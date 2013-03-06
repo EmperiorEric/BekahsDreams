@@ -13,7 +13,9 @@
 @interface DreamListViewController () <UITableViewDataSource, UITableViewDelegate, DreamEditorDelegate>
 {
     UITableView *table;
-    NSArray *dreams;
+    
+    NSMutableArray *dreams;
+    NSMutableArray *archivedDreams;
 }
 @end
 
@@ -27,10 +29,11 @@
     self.title = @"Bekah's Dreams";
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(newDream:)];
     
-    dreams = [[[DataManager sharedManager] dreams] copy];
+    dreams = [[[DataManager sharedManager] dreams] mutableCopy];
+    archivedDreams = [[[DataManager sharedManager] archivedDreams] mutableCopy];
     
     // Setup the Table
-    table = [[UITableView alloc] initWithFrame:CGRectMake(0.0, 0.0, self.view.frame.size.width, self.view.frame.size.height) style:UITableViewStylePlain];
+    table = [[UITableView alloc] initWithFrame:CGRectMake(0.0, 0.0, self.view.frame.size.width, self.view.frame.size.height) style:UITableViewStyleGrouped];
     [table setAutoresizingMask:UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth];
     [table setDataSource:self];
     [table setDelegate:self];
@@ -52,7 +55,7 @@
 
 - (void)didEditDream:(Dream *)dream
 {
-    dreams = [[[DataManager sharedManager] dreams] copy];
+    dreams = [[[DataManager sharedManager] dreams] mutableCopy];
         
     [table reloadData];
 }
@@ -61,13 +64,25 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 1;
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    NSLog(@"rows: %i",dreams.count);
-    return [dreams count];
+    if (section == 0) {
+        return [dreams count];
+    } else {
+        return [archivedDreams count];
+    }
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    if (section == 0) {
+        return @"Dreams";
+    } else {
+        return @"Archived Dreams";
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -78,7 +93,12 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
     }
     
-    Dream *dream = [dreams objectAtIndex:indexPath.row];
+    Dream *dream;
+    if (indexPath.section == 0) {
+        dream = [dreams objectAtIndex:indexPath.row];
+    } else {
+        dream = [archivedDreams objectAtIndex:indexPath.row];
+    }
     
     cell.textLabel.text = dream.title;
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
@@ -91,14 +111,36 @@
     return YES;
 }
 
+- (NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.section == 0) {
+        return @"Archive";
+    } else {
+        return @"Delete";
+    }
+}
+
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        [[[DataManager sharedManager] managedObjectContext] deleteObject:[dreams objectAtIndex:indexPath.row]];
+        if (indexPath.section == 0) {
+            Dream *dream = [dreams objectAtIndex:indexPath.row];
+            dream.archived = [NSNumber numberWithBool:YES];
+            
+            [archivedDreams addObject:dream];
+            [dreams removeObject:dream];
+            
+            [[DataManager sharedManager] saveContext];
+            
+            [tableView moveRowAtIndexPath:indexPath toIndexPath:[NSIndexPath indexPathForRow:(archivedDreams.count - 1) inSection:1]];
+        } else {
+            [[[DataManager sharedManager] managedObjectContext] deleteObject:[archivedDreams objectAtIndex:indexPath.row]];
+            
+            archivedDreams = [[[DataManager sharedManager] archivedDreams] mutableCopy];
+            
+            [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationMiddle];
+        }
         
-        dreams = [[[DataManager sharedManager] dreams] copy];
-        
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationMiddle];
     }
 }
 
@@ -111,9 +153,16 @@
 //    viewer.dream = [dreams objectAtIndex:indexPath.row];
 //
 //    [self.navigationController pushViewController:viewer animated:YES];
-  
+    
+    Dream *dream;
+    if (indexPath.section == 0) {
+        dream = [dreams objectAtIndex:indexPath.row];
+    } else {
+        dream = [archivedDreams objectAtIndex:indexPath.row];
+    }
+    
     DreamEditViewController *editor = [[DreamEditViewController alloc] init];
-    editor.dream = [dreams objectAtIndex:indexPath.row];
+    editor.dream = dream;
     editor.delegate = self;
     
     [self presentViewController:editor animated:YES completion:^{

@@ -17,6 +17,7 @@
 @property (readonly, strong, nonatomic) NSPersistentStoreCoordinator *persistentStoreCoordinator;
 
 @property (readonly, strong, nonatomic) NSArray *dreams;
+@property (readonly, strong, nonatomic) NSArray *archivedDreams;
 
 + (DataManager *)sharedManager;
 

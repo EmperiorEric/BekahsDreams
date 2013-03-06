@@ -2,7 +2,7 @@
 //  Dream.h
 //  Bekahs Dreams
 //
-//  Created by Ryan Poolos on 2/26/13.
+//  Created by Ryan Poolos on 3/5/13.
 //  Copyright (c) 2013 Frozen Fire Studios. All rights reserved.
 //
 
@@ -12,8 +12,9 @@
 
 @interface Dream : NSManagedObject
 
-@property (nonatomic, retain) NSString * title;
 @property (nonatomic, retain) NSString * notes;
 @property (nonatomic, retain) NSDate * timeStamp;
+@property (nonatomic, retain) NSString * title;
+@property (nonatomic, retain) NSNumber * archived;
 
 @end

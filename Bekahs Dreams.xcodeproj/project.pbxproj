@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EF4BBB4D16E6EEC000CC9EBA /* Dream.m in Sources */ = {isa = PBXBuildFile; fileRef = EF4BBB4C16E6EEC000CC9EBA /* Dream.m */; };
 		EF4CC69A16DD74A00090A1DB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF4CC69916DD74A00090A1DB /* UIKit.framework */; };
 		EF4CC69C16DD74A00090A1DB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF4CC69B16DD74A00090A1DB /* Foundation.framework */; };
 		EF4CC69E16DD74A00090A1DB /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF4CC69D16DD74A00090A1DB /* CoreGraphics.framework */; };
@@ -20,7 +21,6 @@
 		EF4CC6B516DD74A00090A1DB /* Bekahs_Dreams.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EF4CC6B316DD74A00090A1DB /* Bekahs_Dreams.xcdatamodeld */; };
 		EF4CC6BD16DD75010090A1DB /* DreamListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF4CC6BC16DD75010090A1DB /* DreamListViewController.m */; };
 		EF4CC6C016DD76320090A1DB /* DataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EF4CC6BF16DD76320090A1DB /* DataManager.m */; };
-		EF4CC6C316DD773C0090A1DB /* Dream.m in Sources */ = {isa = PBXBuildFile; fileRef = EF4CC6C216DD773C0090A1DB /* Dream.m */; };
 		EF4CC6C616DD79290090A1DB /* DreamEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF4CC6C516DD79290090A1DB /* DreamEditViewController.m */; };
 		EF4CC6C916DD7A0A0090A1DB /* DreamViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF4CC6C816DD7A0A0090A1DB /* DreamViewController.m */; };
 		EF4CC6CC16DD98DE0090A1DB /* UITextFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EF4CC6CB16DD98DE0090A1DB /* UITextFieldCell.m */; };
@@ -30,6 +30,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		EF4BBB4B16E6EEC000CC9EBA /* Dream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Dream.h; sourceTree = "<group>"; };
+		EF4BBB4C16E6EEC000CC9EBA /* Dream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Dream.m; sourceTree = "<group>"; };
 		EF4CC69616DD74A00090A1DB /* Bekahs Dreams.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Bekahs Dreams.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EF4CC69916DD74A00090A1DB /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		EF4CC69B16DD74A00090A1DB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -49,8 +51,6 @@
 		EF4CC6BC16DD75010090A1DB /* DreamListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DreamListViewController.m; sourceTree = "<group>"; };
 		EF4CC6BE16DD76320090A1DB /* DataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataManager.h; sourceTree = "<group>"; };
 		EF4CC6BF16DD76320090A1DB /* DataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataManager.m; sourceTree = "<group>"; };
-		EF4CC6C116DD773C0090A1DB /* Dream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Dream.h; sourceTree = "<group>"; };
-		EF4CC6C216DD773C0090A1DB /* Dream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Dream.m; sourceTree = "<group>"; };
 		EF4CC6C416DD79290090A1DB /* DreamEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DreamEditViewController.h; sourceTree = "<group>"; };
 		EF4CC6C516DD79290090A1DB /* DreamEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DreamEditViewController.m; sourceTree = "<group>"; };
 		EF4CC6C716DD7A0A0090A1DB /* DreamViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DreamViewController.h; sourceTree = "<group>"; };
@@ -62,6 +62,7 @@
 		EF4CC6D016DF01600090A1DB /* Bekahs_Dreams 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Bekahs_Dreams 2.xcdatamodel"; sourceTree = "<group>"; };
 		EF4CC6D516DF03BD0090A1DB /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		EF4CC6D716DF03C50090A1DB /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
+		EF5FD91716E6F4AD0032F2D9 /* Bekahs_Dreams 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Bekahs_Dreams 3.xcdatamodel"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,8 +117,8 @@
 				EF4CC6AB16DD74A00090A1DB /* AppDelegate.m */,
 				EF4CC6BE16DD76320090A1DB /* DataManager.h */,
 				EF4CC6BF16DD76320090A1DB /* DataManager.m */,
-				EF4CC6C116DD773C0090A1DB /* Dream.h */,
-				EF4CC6C216DD773C0090A1DB /* Dream.m */,
+				EF4BBB4B16E6EEC000CC9EBA /* Dream.h */,
+				EF4BBB4C16E6EEC000CC9EBA /* Dream.m */,
 				EF4CC6CA16DD98DE0090A1DB /* UITextFieldCell.h */,
 				EF4CC6CB16DD98DE0090A1DB /* UITextFieldCell.m */,
 				EF4CC6CD16DEF18A0090A1DB /* UITextViewCell.h */,
@@ -221,11 +222,11 @@
 				EF4CC6B516DD74A00090A1DB /* Bekahs_Dreams.xcdatamodeld in Sources */,
 				EF4CC6BD16DD75010090A1DB /* DreamListViewController.m in Sources */,
 				EF4CC6C016DD76320090A1DB /* DataManager.m in Sources */,
-				EF4CC6C316DD773C0090A1DB /* Dream.m in Sources */,
 				EF4CC6C616DD79290090A1DB /* DreamEditViewController.m in Sources */,
 				EF4CC6C916DD7A0A0090A1DB /* DreamViewController.m in Sources */,
 				EF4CC6CC16DD98DE0090A1DB /* UITextFieldCell.m in Sources */,
 				EF4CC6CF16DEF18A0090A1DB /* UITextViewCell.m in Sources */,
+				EF4BBB4D16E6EEC000CC9EBA /* Dream.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -351,9 +352,10 @@
 			isa = XCVersionGroup;
 			children = (
 				EF4CC6D016DF01600090A1DB /* Bekahs_Dreams 2.xcdatamodel */,
+				EF5FD91716E6F4AD0032F2D9 /* Bekahs_Dreams 3.xcdatamodel */,
 				EF4CC6B416DD74A00090A1DB /* Bekahs_Dreams.xcdatamodel */,
 			);
-			currentVersion = EF4CC6B416DD74A00090A1DB /* Bekahs_Dreams.xcdatamodel */;
+			currentVersion = EF5FD91716E6F4AD0032F2D9 /* Bekahs_Dreams 3.xcdatamodel */;
 			path = Bekahs_Dreams.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

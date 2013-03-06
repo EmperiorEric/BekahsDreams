@@ -62,6 +62,7 @@ static DataManager *sharedManager = nil;
 - (NSArray *)dreams
 {
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Dream"];
+    [request setPredicate:[NSPredicate predicateWithFormat:@"self.archived == %@",[NSNumber numberWithBool:NO]]];
     [request setSortDescriptors:@[ [NSSortDescriptor sortDescriptorWithKey:@"timeStamp" ascending:YES] ]];
     
     NSError *error;
@@ -72,6 +73,22 @@ static DataManager *sharedManager = nil;
     }
     
     return dreams;
+}
+
+- (NSArray *)archivedDreams
+{
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Dream"];
+    [request setPredicate:[NSPredicate predicateWithFormat:@"self.archived == %@",[NSNumber numberWithBool:YES]]];
+    [request setSortDescriptors:@[ [NSSortDescriptor sortDescriptorWithKey:@"timeStamp" ascending:YES] ]];
+    
+    NSError *error;
+    NSArray *archivedDreams = [self.managedObjectContext executeFetchRequest:request error:&error];
+    
+    if (error) {
+        NSLog(@"Dreams Error: %@",error.localizedDescription);
+    }
+    
+    return archivedDreams;
 }
 
 - (Dream *)addDreamWithTitle:(NSString *)title andNotes:(NSString *)notes
@@ -140,7 +157,7 @@ static DataManager *sharedManager = nil;
     
     NSError *error = nil;
     _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
-    if (![_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:nil error:&error]) {
+    if (![_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:@{NSMigratePersistentStoresAutomaticallyOption:@YES, NSInferMappingModelAutomaticallyOption:@YES} error:&error]) {
         /*
          Replace this implementation with code to handle the error appropriately.
          
